@@ -9,7 +9,7 @@ const LoadingStatus = {
 };
 
 const App = () => {
-  const BASE_URL = "https://content.newtonschool.co/v1/pr/main/users";
+  const BASE_URL =  "https://content.newtonschool.co/v1/pr/main/users";
   const [userId, setUserId] = React.useState(1);
   const [isLoading, setIsLoading] = React.useState(LoadingStatus.NOT_STARTED);
   const [userData, setUserData] = React.useState({
@@ -23,18 +23,13 @@ const App = () => {
   
 
   const handleOnClick = async () => {
-    setIsLoading(LoadingStatus.SUCCESS);
     if(userId > 1 && userId < 10) {
-        try{
+      setIsLoading(LoadingStatus.SUCCESS);
           const response = await fetch(`${BASE_URL}/${userId}`);
           const data = await response.json();
           setUserData({name : data.name , id : data.id , email : data.email , phone : data.phone , website : data.website})
-        }catch(err){
-          console.log(err)
         }
-       
       };
-    }
 
   const onChangeHandler = (event) => {
     setUserId(event.target.value);
