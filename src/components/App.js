@@ -20,17 +20,14 @@ const App = () => {
     webiste: "",
   });
 
-  setTimeout(() => {
-    setIsLoading(false)
-  },2000)
+  
 
   const handleOnClick = async () => {
     if(userId > 1 && userId < 10) {
-      setIsLoading(LoadingStatus.IN_PROGRESS)
+      setIsLoading(LoadingStatus.SUCCESS);
         try{
           const response = await fetch(`${BASE_URL}/${userId}`);
           const data = await response.json();
-          setIsLoading(LoadingStatus.SUCCESS);
           setUserData({name : data.name , id : data.id , email : data.email , phone : data.phone , website : data.website})
         }catch(err){
           console.log(err)
@@ -42,6 +39,10 @@ const App = () => {
   const onChangeHandler = (event) => {
     setUserId(event.target.value);
   };
+
+  setTimeout(() => {
+    setIsLoading(LoadingStatus.NOT_STARTED);
+  },2000)
 
   return (
     <div id="main">
