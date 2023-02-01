@@ -17,7 +17,7 @@ const App = () => {
     email: "",
     name: "",
     phone: "",
-    webiste: "",
+    website: "",
   });
 
   
@@ -61,11 +61,11 @@ const App = () => {
         {isLoading === LoadingStatus.SUCCESS ? <Loader/> : 
       <div id="data">
         <h1>Click on the button to get the user</h1>
-        <h4 id="id">{userData.id}</h4>
-        <h4 id="email">{userData.email}</h4>
-        <h4 id="name">{userData.name}</h4>
-        <h4 id="phone">{userData.phone}</h4>
-        <h4 id="website">{userData.website}</h4>
+        <h1 id="id">{userData.id}</h1>
+        <h1 id="email">{userData.email}</h1>
+        <h1 id="name">{userData.name}</h1>
+        <h1 id="phone">{userData.phone}</h1>
+        <h1 id="website">{userData.website}</h1>
       </div>
       }
     </div>
