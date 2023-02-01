@@ -40,7 +40,7 @@ const App = () => {
     setUserId(event.target.value);
   };
 
-  setTimeout(() => {
+  setInterval(() => {
     setIsLoading(LoadingStatus.NOT_STARTED);
   },2000)
 
