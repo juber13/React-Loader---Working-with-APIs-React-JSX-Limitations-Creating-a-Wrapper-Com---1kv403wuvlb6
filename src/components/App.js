@@ -11,7 +11,7 @@ const LoadingStatus = {
 const App = () => {
   const BASE_URL = "https://content.newtonschool.co/v1/pr/main/users";
   const [userId, setUserId] = React.useState(1);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(LoadingStatus.NOT_STARTED);
   const [userData, setUserData] = React.useState({
     id: "",
     email: "",
@@ -26,10 +26,11 @@ const App = () => {
 
   const handleOnClick = async () => {
     if(userId > 1 && userId < 10) {
-      setIsLoading(true)
+      setIsLoading(LoadingStatus.IN_PROGRESS)
         try{
           const response = await fetch(`${BASE_URL}/${userId}`);
           const data = await response.json();
+          setIsLoading(LoadingStatus.SUCCESS);
           setUserData({name : data.name , id : data.id , email : data.email , phone : data.phone , website : data.website})
         }catch(err){
           console.log(err)
@@ -56,7 +57,7 @@ const App = () => {
       <button id="btn" onClick={handleOnClick}>
         Get User
       </button>
-        {isLoading ? <Loader/> : 
+        {isLoading === LoadingStatus.SUCCESS ? <Loader/> : 
       <div id="data">
         <h1>Click on the button to get the user</h1>
         <h4 id="id">{userData.id}</h4>
