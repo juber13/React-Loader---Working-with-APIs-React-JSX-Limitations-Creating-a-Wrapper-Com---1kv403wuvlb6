@@ -28,6 +28,10 @@ const App = () => {
           const response = await fetch(`${BASE_URL}/${userId}`);
           const data = await response.json();
           setUserData({name : data.name , id : data.id , email : data.email , phone : data.phone , website : data.website})
+          setTimeout(() => {
+            setIsLoading(LoadingStatus.NOT_STARTED);
+            // clearInterval(couterUPdate);
+          },2000)
         }
       };
 
@@ -35,10 +39,7 @@ const App = () => {
     setUserId(event.target.value);
   };
 
-  setTimeout(() => {
-    setIsLoading(LoadingStatus.NOT_STARTED);
-    // clearInterval(couterUPdate);
-  },2000)
+
 
 
 
