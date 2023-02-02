@@ -35,9 +35,12 @@ const App = () => {
     setUserId(event.target.value);
   };
 
-  setTimeOut(() => {
+  setTimeout(() => {
     setIsLoading(LoadingStatus.NOT_STARTED);
+    // clearInterval(couterUPdate);
   },2000)
+
+
 
   return (
     <div id="main">
@@ -53,16 +56,18 @@ const App = () => {
       <button id="btn" onClick={handleOnClick}>
         Get User
       </button>
-        {isLoading === LoadingStatus.SUCCESS ? <Loader/> : 
       <div id="data">
+        {isLoading === LoadingStatus.SUCCESS ? <Loader/> : 
+        <>
         <h1>Click on the button to get the user</h1>
         <h1 id="id">{userData.id}</h1>
         <h1 id="email">{userData.email}</h1>
         <h1 id="name">{userData.name}</h1>
         <h1 id="phone">{userData.phone}</h1>
         <h1 id="website">{userData.website}</h1>
+        </>
+       }
       </div>
-      }
     </div>
   );
 }
