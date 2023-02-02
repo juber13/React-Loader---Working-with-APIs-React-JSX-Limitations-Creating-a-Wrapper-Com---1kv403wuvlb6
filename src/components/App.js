@@ -28,9 +28,9 @@ const App = () => {
       const response = await fetch(`${BASE_URL}/${userId}`);
       const data = await response.json();
       setUserData({name : data.name , id : data.id , email : data.email , phone : data.phone , website : data.website})
-      const update = setTimeout(() => {
+      setTimeout(() => {
         setIsLoading(LoadingStatus.NOT_STARTED);
-            clearInterval(update);
+            // clearInterval(update);
           },2000)
         }
       };
@@ -58,7 +58,7 @@ const App = () => {
         Get User
       </button>
       <div id="data">
-        {isLoading === LoadingStatus.SUCCESS ? <Loader/> : 
+        {isLoading  == "SUCCESS" ? <Loader/> : 
         <>
         <h1>Click on the button to get the user</h1>
         <h1 id="id">{userData.id}</h1>
