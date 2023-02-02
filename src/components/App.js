@@ -25,12 +25,12 @@ const App = () => {
   const handleOnClick = async () => {
     if(userId > 1 && userId < 10) {
       setIsLoading(LoadingStatus.SUCCESS);
-          const response = await fetch(`${BASE_URL}/${userId}`);
-          const data = await response.json();
-          setUserData({name : data.name , id : data.id , email : data.email , phone : data.phone , website : data.website})
-          setTimeout(() => {
-            setIsLoading(LoadingStatus.NOT_STARTED);
-            // clearInterval(couterUPdate);
+      const response = await fetch(`${BASE_URL}/${userId}`);
+      const data = await response.json();
+      setUserData({name : data.name , id : data.id , email : data.email , phone : data.phone , website : data.website})
+      const update = setTimeout(() => {
+        setIsLoading(LoadingStatus.NOT_STARTED);
+            clearInterval(update);
           },2000)
         }
       };
