@@ -23,7 +23,7 @@ const App = () => {
   
 
   const handleOnClick = async () => {
-    if(userId > 1 && userId < 10) {
+    if(userId >= 1 && userId <= 10) {
       setIsLoading(LoadingStatus.SUCCESS);
       const response = await fetch(`${BASE_URL}/${userId}`);
       const data = await response.json();
